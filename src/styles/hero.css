@@ -1,0 +1,256 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.hero-content {
+  container: hero;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  position: relative;
+  --mouse-x: 0;
+  --mouse-y: 0;
+}
+
+.hero-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--mouse-x);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.2), transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  max-width: 400px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 180px;
+  box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+}
+
+.btn-secondary {
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 20, 147, 0.2);
+  border-color: rgba(255, 20, 147, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(255, 20, 147, 0.3);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff1493, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-image-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #ff1493, #8a2be2, #00d4ff, #ff1493);
+  border-radius: 15px;
+  opacity: 0.3;
+  animation: borderGlow 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+.scroll-arrow {
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-visual {
+    min-height: 350px;
+  }
+
+  .hero-image-container {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px 40px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .hero-visual {
+    min-height: 300px;
+  }
+
+  .hero-image-container {
+    max-width: 250px;
+    aspect-ratio: 1;
+  }
+}
