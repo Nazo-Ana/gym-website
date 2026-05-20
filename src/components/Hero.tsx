@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import '../styles/hero.css';
+import { MagneticButton } from './MagneticButton';
 
 export const Hero = () => {
   const textRef = useRef<HTMLDivElement>(null);
@@ -129,13 +130,7 @@ export const Hero = () => {
           </motion.p>
 
           <motion.div className="hero-buttons" variants={itemVariants}>
-            <motion.button
-              className="gradient-button btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Free Trial
-            </motion.button>
+            <MagneticButton text="Start Free Trial" contentId="strength" className="gradient-button btn-primary" />
             <motion.button
               className="btn-secondary"
               whileHover={{ scale: 1.05 }}
