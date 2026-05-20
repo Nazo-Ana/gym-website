@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import '../styles/hero.css';
 import { MagneticButton } from './MagneticButton';
+import heroImage from '../assets/hero.png';
 
 export const Hero = () => {
   const textRef = useRef<HTMLDivElement>(null);
@@ -164,11 +165,7 @@ export const Hero = () => {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <div className="hero-image-container glassmorphic floating-element">
-            <img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80"
-              alt="Fitness Hero"
-              className="hero-image"
-            />
+            <img src={heroImage} alt="Fitness Hero" className="hero-image" />
           </div>
         </motion.div>
       </div>
